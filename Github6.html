@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lab 7 Portfolio</title>
+    <title>Lab 6 Portfolio</title>
     <link rel="stylesheet" href="style.css">
 
     <style>
@@ -57,62 +57,48 @@
         <a href="index.html">Home</a>
     </div>
 
-    <h1>Lab 7 Evidence</h1>
+    <h1>Lab 6 Evidence</h1>
 
     <p>
-        <strong>Task 1 (part 1):</strong><br>
-        The first task for lab 7 required me to produce a long scheduling algorithm in Visual Studio; to do this I had to create a Job class. In the class, I created parameters for ID (the person), arrivalTime, executionTime and priority. Once I had defined the job class, I produced a new list in my main function using the parameters in the Job class. All the jobs then get compared against each other by using their arrival time; the order of the jobs will be from the shortest to the highest arrival time. Finally, the jobs all have their priority checked against the minimum priority requirement of 5; if they do not pass the requirement they are excluded from the final list.
+        <strong>Task 1:</strong><br>
+        Task 1 required me to check if VM1 and VM2 could communicate with each other; this required me to check the IP address on both VMs. Then I performed a ping and entered VM2’s IP address which then showed that both VMs could communicate with each other. By performing this I was able to see that both virtual machines were connected and would be able to share data with each other using their IP addresses.
         <br>
-        <img src="Photos/Lab7-Task1-part1-long-term-scheduling.png">
-    </p>
-
-    <p>
-        <strong>Task 1 (part 2):</strong><br>
-        For part 2, I had to create another version of the scheduling program except this is the Short-Term Scheduling algorithm where the largest difference was that there was no priority check for any of the processes. The reason that the Short-Term Scheduling algorithm does not perform a priority check is because FCFS scheduling focuses on completing processes in the order they arrive rather than filtering them based on importance and because of this, the Long-Term Scheduling algorithm takes longer to perform the same function. However, a downside to short-term scheduling is that processes with long execution times can delay newer processes from completing quickly. Furthermore, the Gantt chart provided shows that each process is completed as it enters the system and one process will not complete before the previous process has completed due to the lack of priority checks; since every process must complete before the next one starts, the Gantt chart is easy to read and understand.
-        <br>
-        <img src="Photos/Lab7-Task1-part2-1.png">
-        <img src="Photos/Lab7-Task1-part2-2.png">
-        <img src="Photos/Lab7-Task1-part2-3.png">
-        <img src="Photos/Lab7-Task1-part2-FCFS-gantt-chart.png">
+        <img src="Photos/Lab6-Task1-Ip-address-of-VM1.png">
     </p>
 
     <p>
         <strong>Task 2:</strong><br>
-        The second task required me to produce a round robin scheduling algorithm to show the efficiency of processes in different time slices. These are defined chunks of processing time. To complete this program, I produced an overall Round Robin method that had the parameters (List&lt;Process&gt; processes, int timeQuantum). The reason I did this is so that I would be able to run all the time slices in the program.
-        <br><br>
-        RoundRobin(processes, 1);<br>
-        RoundRobin(processes, 3);<br>
-        RoundRobin(processes, 4);<br>
-        RoundRobin(processes, 6);<br><br>
-        By doing this, all the simulations are run at once making it easy to spot the differences in efficiency in each time slice. Furthermore, I intentionally added the Gantt charts at the end of the code. The Gantt charts show the exact results of the simulations that ran.
-        <br><br>
-        After looking at the Gantt charts, it is made apparent that as the time quantum increases between the charts, the number of context switches decreases. However, the overall responsiveness of the CPU decreases leading to there being a higher chance that new processes take longer to complete if they are being added into the CPU whilst it is already performing processes.
-        <br><br>
-        The way that you can tell that the context switches have decreased is that the number of times that a specific letter appears in the Gantt chart decreases as the time quantum increases. The cause of this is that for time quantum 1, the CPU changes process every 1 unit of time. Due to this, some processes cannot be fully completed requiring them to be processed again. Compared to time quantum 6, where a switch only happens if 6 units of time have passed, processes are given more time to complete before being interrupted. This is backed up by process "G" that has an execution time of 6. Looking at Q1, process "G" appears 4 times but in time quantum 6 it only appears 1 time. This proves that a higher time quantum reduces context switching and allows processes to run for longer before being interrupted.
+        Next, I had to do a Network Connection test as I needed to see if the IIS server was running on my VM2 properly. After completing the test, I was left with results showing the Remote Address, Remote Port, the Interface Alias and the Source Address. Overall, this provides evidence that the IIS server on VM2 can be reachable across a network and that port 80 was accepting incoming connections successfully.
         <br>
-        <img src="Photos/Lab7-Task2-round-robin-1.png">
-        <img src="Photos/Lab7-Task2-round-robin-2.png">
-        <img src="Photos/Lab7-Task2-round-robin-3.png">
-        <img src="Photos/Lab7-Task2-round-robin-q1.png">
-        <img src="Photos/Lab7-Task2-round-robin-q3.png">
-        <img src="Photos/Lab7-Task2-round-robin-q4.png">
-        <img src="Photos/Lab7-Task2-round-robin-q6.png">
+        <img src="Photos/Lab6-Task2-vm-communication.png">
     </p>
 
     <p>
         <strong>Task 3:</strong><br>
-        For task 3 I had to add a priority system to the round robin scheduling algorithm, and this is because the algorithm previously treated all processes equally. Due to this the CPU would work on a process as it was given to it. However, the issue with this is that there could be some processes that need to be completed quicker than others. Using Round Robin 1 and 6 as examples, process "E" will be completed the quickest due to having a priority of 10 and process "F" will be completed last due to it having priority 3.
-        <br><br>
-        The way that I made this priority system was by creating a new priority variable to be used in the code, giving all the processes in the code a new priority, replacing the FIFO queue selection with a process to pick the process with the highest priority (.OrderByDescending(p =&gt; p.Priority)) and then performing the FIFO check.
-        <br><br>
-        This logic is backed up by the Gantt charts as unlike the regular Round Robin Q1, Priority Round Robin Q1 shows that process "E" gets repeated 2 times and then does not get repeated whereas regular Round Robin Q1 must go through 4 other processes before it is able to reach process E again. Looking at process E's priority, we can see that it has priority 10; this proves that the code is now completing processes based on the priority they have been given.
+        Task 3 required me to perform the same checks for VM1 as I did for VM2 since there is a chance that VM1 cannot communicate with V2 whilst VM2 still can communicate. At first I had entered the command incorrectly which caused the red error message to appear but after retyping it the Test-NetConnection was successful which showed that both virtual machines could communicate with one another properly across the network; this is proven by the 3rd screenshot which states TcpTestSuceeded = True.
         <br>
-        <img src="Photos/Lab7-Task3-priority-round-robin-code-1.png">
-        <img src="Photos/Lab7-Task3-priority-round-robin-code-2.png">
-        <img src="Photos/Lab7-Task3-priority-round-robin-code-3.png">
-        <img src="Photos/Lab7-Task3-priority-round-robin-processes.png">
-        <img src="Photos/Lab7-Task3-priority-round-robin-q1.png">
-        <img src="Photos/Lab7-Task3-priority-round-robin-q6.png">
+        <img src="Photos/Lab6-Task3-vm1-vm2-communication.png">
+    </p>
+
+    <p>
+        <strong>Task 4:</strong><br>
+        After task 3, I had to deploy my website on one of my virtual machines and I did this using a runner. To use the runner, I went into my GitHub repo, navigated to the Actions tab and selected the runner. This provided me with a set of code to paste into my VM’s command prompt. Once the code had been pasted, I was left with a prompt telling me that my VM was connected to GitHub and that it is listening for Jobs. The benefit to having the runner is that it allowed GitHub Actions to deploy any changes that I made to the website automatically onto the virtual machine; this is a substantial time save as it stopped me from having to manually transfer the files over to the virtual machine myself any time a change was made.
+        <br>
+        <img src="Photos/Lab6-Task4-runner.png">
+    </p>
+
+    <p>
+        <strong>Task 5:</strong><br>
+        After connecting GitHub to my Virtual Machine, I had to create a new workflow on GitHub that would push my website onto the Virtual Machine. To ensure that I still had my files I cut the files in my wwwroot folder and placed it into a backup folder on my desktop. Then on GitHub, I created a new workflow with the YAML provided and committed the changes which pushed the website onto the VM. The reason I needed the YAML is because the workflow it provides tells GitHub Actions what it needs to do whenever a change is pushed to the repository. The workflow specifies the branch that needs to be monitored, which self-hosted runner should execute the job and the PowerShell commands that are needed to copy the website files into the wwwroot folder.
+        <br>
+        <img src="Photos/Lab6-Task5-yaml-workflow.png">
+    </p>
+
+    <p>
+        <strong>Updated website on Virtual Machine:</strong><br>
+        Finally, at the end of the lab, I made some updates to my website to show that the runner and GitHub Actions are working as intended. I added a navigation bar to my website as well as changed the colour of the text on the menu on the machine I was working on and once I made the change, I pushed the change to the GitHub repository. Once this change was pushed onto the GitHub repository, GitHub Actions transferred the change over to the virtual machine. This can be seen in the screenshot as the URL shows that the webpage is running from VM1.
+        <br>
+        <img src="Photos/Lab6-Task5-updated-site.png">
     </p>
 
     <script src="script.js"></script>

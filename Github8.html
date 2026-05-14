@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 8 Portfolio</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1077fd;
+            color: white;
+        }
+
+        .topbar {
+            background-color: black;
+            padding: 15px;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        p {
+            width: 80%;
+            margin: 20px auto;
+            line-height: 1.6;
+            font-size: 1.1rem;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        <a href="index.html">Home</a>
+    </div>
+
+    <h1>Lab 8 Evidence</h1>
+
+    <p>
+        <strong>Task 1</strong><br><br>
+
+        <strong>1)</strong><br>
+
+        Given the following:<br><br>
+
+        Virtual address:<br>
+        VPN – 4-bit VPN, 8-bit offset<br><br>
+
+        Physical address:<br>
+        3-bit PPN, 8-bit offset<br><br>
+
+        Determine the number of virtual pages and bytes per page.<br><br>
+
+        The 4-bit VPN determines the number of virtual pages:<br>
+        2^4 = 16<br><br>
+
+        The 8-bit offset determines the number of bytes per page:<br>
+        2^8 = 256<br><br>
+
+        Therefore:<br>
+        Number of virtual pages = 16<br>
+        Bytes per page = 256 bytes
+    </p>
+
+    <p>
+        <strong>2)</strong><br>
+
+        Virtual address = 0x2C8<br><br>
+
+        To find the VPN, the first hexadecimal digit is used because each hexadecimal digit represents 4 bits.<br><br>
+
+        VPN = 0x2<br>
+        Offset = 0xC8<br><br>
+
+        The page map gives the following values:<br><br>
+
+        VPN: 2<br>
+        D: 0<br>
+        R: 1<br>
+        PPN: 4<br><br>
+
+        Therefore:<br>
+        PPN = 4<br>
+        Resident bit (R) = 1<br>
+        Dirty bit (D) = 0<br><br>
+
+        Final answer:<br>
+        VPN = 0x2<br>
+        Offset = 0xC8<br>
+        PPN = 0x4
+    </p>
+
+    <p>
+        <strong>Task 2</strong><br><br>
+
+        The bottom of main memory is 32KB.<br><br>
+
+        It is divided into 8 page frames, each being 4KB in size.<br><br>
+
+        4KB = 4096 bytes<br><br>
+
+        Since memory addresses start at 0, the highest address in each frame is calculated using:<br><br>
+
+        Starting Address + 4095<br><br>
+
+        Value of all frames:<br><br>
+
+        Frame 0 → 0 + 4095 = 4095 → D<br>
+        Frame 1 → 4096 + 4095 = 8191<br>
+        Frame 2 → 8192 + 4095 = 12,287<br>
+        Frame 3 → 12,288 + 4095 = 16,383 → C<br>
+        Frame 4 → 16,384 + 4095 = 20,479<br>
+        Frame 5 → 20,480 + 4095 = 24,575 → B<br>
+        Frame 6 → 24,576 + 4095 = 28,671<br>
+        Frame 7 → 28,672 + 4095 = 32,767 → A<br><br>
+
+        Final answers:<br><br>
+
+        A = 32,767<br>
+        B = 24,575<br>
+        C = 16,383<br>
+        D = 4095
+    </p>
+
+    <p>
+        <strong>Task 3</strong><br><br>
+
+        Before solving the problem, the 32-bit virtual address must be split into the page number and offset.<br><br>
+
+        The first 20 bits represent the page:<br>
+        00000000000000000011<br><br>
+
+        The final 12 bits represent the offset:<br>
+        000010110111
+    </p>
+
+    <p>
+        <strong>3a)</strong><br>
+
+        Find the Virtual Page Number:<br><br>
+
+        VPN bits = 11<br><br>
+
+        This corresponds to page number 3.<br><br>
+
+        Therefore:<br>
+        Virtual Page Number = 3
+    </p>
+
+    <p>
+        <strong>3b)</strong><br>
+
+        To find the page frame value, I looked in the table for Virtual Page Number 3.<br><br>
+
+        The table showed:<br><br>
+
+        Virtual Page: 3<br>
+        Present Bit: 1<br>
+        Page Frame: 011<br><br>
+
+        Binary page frame value = 011<br><br>
+
+        Converting binary to denary:<br><br>
+
+        0 × 2^2 = 0<br>
+        1 × 2^1 = 2<br>
+        1 × 2^0 = 1<br><br>
+
+        0 + 2 + 1 = 3<br><br>
+
+        Therefore:<br>
+        Binary Page Frame Value = 011<br>
+        Denary Page Frame Value = 3
+    </p>
+
+    <p>
+        <strong>3c)</strong><br>
+
+        To construct the physical address, the page frame replaces the VPN while the offset remains unchanged.<br><br>
+
+        Page Frame = 011<br>
+        Offset = 000010110111<br><br>
+
+        Physical Address:<br>
+        011000010110111
+    </p>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
