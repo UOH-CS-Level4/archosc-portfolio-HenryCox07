@@ -1,49 +1,124 @@
-<!Doctype html>
-<html>
-    <head>
-        <title>My portfolio</title>
-        <link rel ="stylesheet" href = "style.css">
-    </head>
-    <body>
-        <div class="w3-container">
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="w3-panel w3-padding-16 w3-orange">
-  <h4></h4>
-  <p></p>
-</div>
-<a href = "index.html"> Home</a>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 9 Portfolio</title>
+    <link rel="stylesheet" href="style.css">
 
-<h1> Lab 9 evidence </h1>
-<p> What is Banker's Algorithm:
-   In this lab I had to use Banker's algorithm to check if all the processes in the system I was provided could be safely executed with the resources that are available to it. The reason that we need to use Banker's algorithm is to prevent an operating system (OS) from reaching a deadlock. The Banker's algorithm stops this by checking if any resources given are to the OS leaves the system in a safe state; for a system to be in a safe state it must be able to eventually complete all tasks, not get stuck and properly release the resources it uses. The check is performed by checking how many resources are currently available, checking how many more resources each process needs to complete, simulates the processes being executed and then determines if there is a safe sequence for all the processes to finish. If it is successful, the request is allowed but if not the request to complete the processes is denied.
-</p>
-<p> What is deadlock:
-    A deadlock is an instance where one or more processes become permanently stuck causing all the other processes to stop completing as well leading to the system effectively freezing. This is bad for systems as it not only stops systems from working it also wastes resources.
-</p>
-<p> Task 1:
-    For task 1, the resources available to the system were R1 = 10, R2 = 5 and R3 = 7. Whilst checking if the processes could safely execute, the algorithm compared the allocation matrix (this shows the resources that are currently assigned to each process in the system) and the maximum demand matrix (which shows the maximum amount of resources each process may require to complete successfully) which were both identical. Banker's Algorithm compares these matrices to calculate the remaining resources needed by each process before execution can safely continue. Due to being identical, each process had a remaining need (how many more resources they need to complete a task) of 0; due to this all the processes already had the resources they needed to complete successfully. Evidence to support this is the sequence that the program generated as they were all able to finish in sequential order meaning they all had the resources needed for them to complete in the original order.
-    <img src = "Photos/Lab9-Task1-manuel-analysis.png" >
-</p>
-<p> Task 2:
-    For task 2, the algorithm was provided with more resources as R1 went up from 10 to 12 whilst R2 and R3 still kept their 5 and 7 resource values. Similarly to the first task, the algorithm compared the allocation demand matrix and the maximum demand matrix which are still identical. Due to this the processes in task 2 also have a remaining need of 0 and already have all the resources they need to all pass which can be seen with the safe sequence that the program outputs. All that happened was the system was provided more resources to complete the processes it was already completing. 
-    <img src = "Photos/Lab9-Task2-increasing-resources.png">
-</p>
-<p> Task 3:
-    This time, for task 3, the resource value R2 was increased from 5 to 7 whilst R1 and R3 stayed at 12 and 7 respectively. Just like the previous 2, the allocation demand matrix and maximum demand matrix are identical meaning that the remaining need is still 0. Due to this, all the processes are completed successfully in the same safe sequence as the last 2 tests. The outcome of the test is the same as test 2, all the processes are completed successfully but the system has more resources to work with. This is a benefit to the system as it reduces the chances that a process has to wait to be completed meaning that the processes will finish quicker making the system more efficient.
-    <img src = "Photos/Lab9-Task3-further-increasing-resources.png">
-</p>
-<p> Task 4:
-    For Task 4 I had to create a C# program to simulate a Banker's Algorithm that allowed the user to input the processes, the number or resource types, as well as the allocation and demand matrix; once the user has put the details into the system, arrays are created to store the information to be used later on. Then, the program calculates the need matrix by subtracting the allocation matrix from the maximum demand matrix. This allows the algorithm to determine how many more resources each process still requires before it can complete execution safely. The main section of the program performs the Banker’s Algorithm safety check using a while loop which checks each unfinished process and compares its remaining need with the currently available resources. If a process can safely execute, it is added to the safe sequence, marked as completed and its allocated resources are returned into the system. This continues until all processes complete successfully or no safe process can be found. When the program was tested using the values provided in the assignment, the algorithm generated the safe sequence:
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1077fd;
+            color: white;
+            text-align: center;
+        }
 
-P1 -> P2 -> P3 -> P4 -> P5
+        .topbar {
+            background-color: black;
+            padding: 15px;
+        }
 
-This confirmed that the system was in a safe state because every process was able to complete successfully without causing a deadlock.
+        a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
 
-    <img src = "Photos/Lab9-Task 4-code-part1.png">
-    <img src = "Photos/Lab9-Task 4-code-part2.png">
-    <img src = "Photos/Lab9-Task 4-code-part3.png">
-    <img src = "Photos/Lab9-Task 4-code-part4.png">
-</p>
-<script src="script.js"></script>
-    </body>
+        a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-top: 20px;
+        }
+
+        p {
+            width: 80%;
+            margin: 20px auto;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        img {
+            width: 80%;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        <a href="index.html">Home</a>
+    </div>
+
+    <h1>Lab 9 Evidence</h1>
+
+    <p>
+        <strong>What is Banker's Algorithm:</strong><br>
+        In this lab I had to use Banker's algorithm to check if all the processes in the system I was provided could be safely executed with the resources that are available to it. The reason that we need to use Banker's algorithm is to prevent an operating system (OS) from reaching a deadlock. The Banker's algorithm stops this by checking whether allocating resources to a process would leave the system in a safe state; for a system to be in a safe state it must be able to eventually complete all tasks, not get stuck and properly release the resources it uses. The check is performed by checking how many resources are currently available, checking how many more resources each process needs to complete, simulating the processes being executed and then determining if there is a safe sequence for all the processes to finish. If it is successful, the request is allowed but if not the request to complete the processes is denied.
+    </p>
+
+    <p>
+        <strong>What is deadlock:</strong><br>
+        A deadlock is an instance where one or more processes become permanently stuck, preventing other processes from continuing execution. This is bad for systems as it not only stops systems from working but also wastes resources.
+    </p>
+
+    <p>
+        <strong>Task 1:</strong><br>
+        For task 1, the resources available to the system were R1 = 10, R2 = 5 and R3 = 7. Whilst checking if the processes could safely execute, the algorithm compared the allocation matrix, which shows the resources that are currently assigned to each process in the system, and the maximum demand matrix, which shows the maximum amount of resources each process may require to complete successfully. These were both identical.
+        <br><br>
+        Banker's Algorithm compares these matrices to calculate the remaining resources needed by each process before execution can safely continue. Due to being identical, each process had a remaining need of 0; due to this all the processes already had the resources they needed to complete successfully. Evidence to support this is the sequence that the program generated as they were all able to finish in sequential order, meaning they all had the resources needed for them to complete in the original order.
+        <br>
+        <img src="Photos/Lab9-Task1-manuel-analysis.png">
+    </p>
+
+    <p>
+        <strong>Task 2:</strong><br>
+        For task 2, the algorithm was provided with more resources as R1 went up from 10 to 12 whilst R2 and R3 still kept their 5 and 7 resource values. Similarly to the first task, the algorithm compared the allocation demand matrix and the maximum demand matrix which were still identical.
+        <br><br>
+        Due to this, the processes in task 2 also had a remaining need of 0 and already had all the resources they needed to pass, which can be seen with the safe sequence that the program outputs. All that happened was the system was provided with more resources to complete the processes it was already completing.
+        <br>
+        <img src="Photos/Lab9-Task2-increasing-resources.png">
+    </p>
+
+    <p>
+        <strong>Task 3:</strong><br>
+        This time, for task 3, the resource value R2 was increased from 5 to 7 whilst R1 and R3 stayed at 12 and 7 respectively. Just like the previous two tasks, the allocation demand matrix and maximum demand matrix were identical meaning that the remaining need was still 0.
+        <br><br>
+        Due to this, all the processes were completed successfully in the same safe sequence as the last two tests. The outcome of the test was the same as task 2; all the processes were completed successfully but the system had more resources to work with. This is a benefit to the system as it reduces the chances that a process has to wait to be completed, meaning that the processes may finish more efficiently.
+        <br>
+        <img src="Photos/Lab9-Task3-further-increasing-resources.png">
+    </p>
+
+    <p>
+        <strong>Task 4:</strong><br>
+        For Task 4 I had to create a C# program to simulate a Banker's Algorithm that allowed the user to input the processes, the number of resource types, as well as the allocation and demand matrix. Once the user put the details into the system, arrays were created to store the information to be used later on.
+        <br><br>
+        Then, the program calculated the need matrix by subtracting the allocation matrix from the maximum demand matrix. This allowed the algorithm to determine how many more resources each process still required before it could complete execution safely.
+        <br><br>
+        The main section of the program performed the Banker's Algorithm safety check using a while loop which checked each unfinished process and compared its remaining need with the currently available resources. If a process could safely execute, it was added to the safe sequence, marked as completed and its allocated resources were returned into the system. This continued until all processes completed successfully or no safe process could be found.
+        <br><br>
+        When the program was tested using the values provided in the assignment, the algorithm generated the safe sequence:
+        <br><br>
+        P1 → P2 → P3 → P4 → P5
+        <br><br>
+        This confirmed that the system was in a safe state because every process was able to complete successfully without causing a deadlock.
+        <br>
+        <img src="Photos/Lab9-Task4-output.png"
+        <img src="Photos/Lab9-Task 4-code-part1.png">
+        <img src="Photos/Lab9-Task4-code-part2.png">
+        <img src="Photos/Lab9-Task4-code-part3.png">
+        <img src="Photos/Lab9-Task4-code-part4.png">
+    </p>
+
+    <script src="script.js"></script>
+
+</body>
+
 </html>
