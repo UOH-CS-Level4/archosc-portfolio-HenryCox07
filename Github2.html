@@ -1,52 +1,89 @@
-<!Doctype html>
-<html>
-    <head>
-        <title>My portfolio</title>
-        <link rel ="stylesheet" href = "style.css">
-    </head>
-    <body>
-        <script src = "script.js"></script>
+<!DOCTYPE html>
+<html lang="en">
 
-        <div class="w3-container">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="w3-panel w3-padding-16 w3-orange">
-  <h4></h4>
-  <p></p>
-</div>
-<a href = "index.html"> Home</a>
+    <title>Lab 3 Portfolio</title>
 
-<h1> Lab 2 evidence </h1>
-<p> Task 1:
-   To complete the first set of tasks I made a new local repository called ArchOSC assignment with the photos folder added into it. After that, I created a new document called lab 2 placeholder which was then saved into the local repository. Once the word doc was saved into the local repository, I took a screenshot of the repos contents which then got pasted into the word doc.
-    <img src = "https://raw.githubusercontent.com/UOH-CS-Level4/archosc-portfolio-HenryCox07/refs/heads/main/Photos/Screenshot%20of%20the%20New%20Assignemnt%20repo%20in%20Github.png" >
-</p>
-<p> Task 2:
-    For the second task I had to initialise a new repo in the ArchOSC assignment folder. The way that I did this was by opening the command line inside the ArchOSC assignment folder. Then once I had the command line open in the correct folder, I had to type git init into the command line. What this did is it initialised an empty git repository in the folder.  
-    <img src = "https://raw.githubusercontent.com/UOH-CS-Level4/archosc-portfolio-HenryCox07/refs/heads/main/Photos/Screenshot%20showing%20the%20newly%20created%20workflow.png?token=GHSAT0AAAAAADVWXMP6VMP77OWY6MIPLXF42MULQRA" >
-</p>
-<p> Task 3:
-    For the 3rd task I had to produce a repo on Github that my local repo can link to. To produce this I went onto Github and selected the new repo button; this took me to an options screen. I made the repo private, include a README.md as well as a. gitignore visual studio. Once I selected myself as the owner I had a new repo.
-    <img src = "https://raw.githubusercontent.com/UOH-CS-Level4/archosc-portfolio-HenryCox07/refs/heads/main/Photos/Screenshot%20of%20added%20YAML%20onto%20my%20website.png?token=GHSAT0AAAAAADVWXMP7N77BVPZ2J3JDYPWO2MULREA" >
-</p>
-<p> Task 4:
-    For this task I had to link both my local and online repo together and then pull the contents from my repo on Github onto the local repo. The way I achieved this is by using the command git remote add origin and then pasted the link to my online repo into the command. By using this command, I told the local repo where it should be looking if it is pulling or pushing information. Then to add the contents of my repo on Github to my local repo I used git pull origin main. This worked because I created that link between the two repos; this pulled the contents of my online repo to my local one.
-</p>
-<p> Task 5:
-    The fifth task required me to produce a website and save it into my local repo. To start I opened a new text file in Visual Studio code; once I made the text file copied the provided code into the text file. Once the code had been pasted into the file, I saved the file into my local repo and called it indesx.html. Now that the file has been saved onto my local repo I opened the file and checked the webpage online and it worked.
-</p>
-<p> Task 6:
-For task 6 I had to commit all my files to my local repository; the way I did this was using git status to check what files were in my local folder, then using git add . to add all the files from the folder to the local repo and then using git commit to save all the files onto the local repository as well as leaving a comment about what had just been committed.
-</p> 
-<p> Task 7:
-For this next task I was made to push my committed files in my local repo to my repo in Github. To do this I used Git status to check if any files needed committing, I used the command git push and was then prompted to type the command git push - - set – upstream origin main which pushed the files to my Github repo.
-</p>
-<p> Task 8:
-For the first set of changes I went into the source code and altered the text in the body <h1> from insert name here to my name.
-For the second change to the website, I altered the colour of the page in the source code from white to blue. I did this by going to background colour in the “style” body and changing the colour using the dropdown.
-</p>
-<p> Task 9:
-For this task I had to deploy the website onto Github; the way I did this is I went to my settings on Github to allow for deployments to be made. Then I directed the deployment to my main branch and saved the changes. When checking the deployment my website was there. 
-</p>
+    <link rel="stylesheet" href="style.css">
 
-    </body>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1077fd;
+            color: white;
+            text-align: center;
+        }
+
+        .topbar {
+            background-color: black;
+            padding: 15px;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-top: 20px;
+        }
+
+        p {
+            width: 80%;
+            margin: 20px auto;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        img {
+            width: 80%;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        <a href="index.html">Home</a>
+    </div>
+
+    <h1>Lab 3</h1>
+
+    <p>
+        <strong>Task 1:</strong><br>
+        For the first task in this lab I was required to take the work that I had produced last week from its repository on GitHub and make a new one for this lab. I did this by pulling the contents from GitHub onto my local repository, creating an "old assignment" and "new assignment" folder. I moved the contents in the cloned repository into the "old assignment" folder before copying it into the "new assignment" folder. Once I had done this, I pushed the folder into the new GitHub repository I had been provided.
+        <br>
+        <img src="Photos/Lab3-Task1-new-repo.png">
+    </p>
+
+    <p>
+        <strong>Task 2:</strong><br>
+        For Task 2 I had to create a new workflow; the way I did this was by republishing my website in the new repository and changing the Pages setting from "Deploy from a Branch" to "GitHub Actions", which enabled the Actions tab to appear. From there I navigated to the Actions page, selected "Create New Workflow" and was brought to the workflow configuration page where I changed the workflow name from main.yml to deployment.yaml. I needed this workflow because this is where I would put the YAML to help automate my website's deployments when an update is made to it.
+        <br>
+        <img src="Photos/Lab3-Task2-workflow.png">
+    </p>
+
+    <p>
+        <strong>Task 3:</strong><br>
+        The third task for the coursework required me to produce the YAML code for my website to allow me the opportunity to add metadata to my pages. YAML is used by GitHub Actions to define automated workflows and deployment instructions for the website. By creating this YAML file, it allowed GitHub Actions to automatically deploy the website whenever changes were uploaded to the repository.
+        <br>
+        <img src="Photos/Lab3-Task3(1)-yaml.png">
+    </p>
+
+    <script src="script.js"></script>
+
+</body>
+
 </html>

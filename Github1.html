@@ -1,58 +1,131 @@
-<!Doctype html>
-<html>
-    <head>
-        <title>My portfolio</title>
-        <link rel ="stylesheet" href = "style.css">
-    </head>
-    <body>
+<!DOCTYPE html>
+<html lang="en">
 
-        <div class="w3-container">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<div class="w3-panel w3-padding-16 w3-orange">
-  <h4></h4>
-  <p></p>
-</div>
-<a href = "index.html"> Home</a>
+    <title>Lab 2 Portfolio</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1077fd;
+            color: white;
+            text-align: center;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-top: 20px;
+        }
+
+        p {
+            width: 80%;
+            margin: 20px auto;
+            line-height: 1.6;
+        }
+
+        img {
+            width: 80%;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+
+        .topbar {
+            background-color: black;
+            padding: 15px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        <a href="index.html">Home</a>
+    </div>
+
     <h1>Lab 2</h1>
-    <p> Task 1:
-To complete the first set of tasks I made a new local repository called ArchOSC assignment with the photos folder added into it. After that, I created a new document called lab 2 placeholder which was then saved into the local repository. Once the word doc was saved into the local repository, I took a screenshot of the repos contents which was then pasted into the Word doc.
-<img src="Photos/Lab2-Task1-folder.png">
-</p>
-<p>Task 2:
-For the second task I had to initialise a new repo in the ArchOSC assignment folder. The way that I did this was by opening the command line inside the ArchOSC assignment folder. Then once I had the command line open in the correct folder, I had to type git init into the command line. This initialised an empty git repository in the folder. 
-<img src="Photos/Lab2-Task2-git-init.png"> 
-</p>
-<p>Task 3:
-For the 3rd task I had to produce a repo on GitHub that my local repo can link to. To produce this I went onto GitHub and selected the new repo button; this took me to an options screen. I made the repo private and included a README.md file as well as a Visual Studio .gitignore file. All I needed to do at this point was select myself as the repo owner and I had a new repo. 
-<img src="Photos/Lab2-Task3-github-repo.png">
-</p>
-<p>Task 4:
-For this task I had to link both my local and online repo together and then pull the contents from my repo on GitHub onto the local repo. The way I achieved this is by using the command git remote add origin and then pasted the link to my online repo into the command. By using this command, I told the local repo where it should be looking if it is pulling or pushing information and then to add the contents of my repo on GitHub to my local repo I used git pull origin main. This worked because I created that link between the two repos; this pulled the contents of my online repo to my local one.
-<img src="Photos/Lab2-Task4-git-pull.png">
-</p>
-<p>Task 5:
-The fifth task required me to produce a website and save it into my local repo. To start I opened a new text file in Visual Studio code; once I made the text file, I copied the code I was provided into it. Once the code had been pasted into the file, I saved the file into my local repo and called it index.html. Now that the file has been saved onto my local repo, I opened the file in my browser to confirm that the webpage displayed correctly, and it worked.
-<img src="Photos/Lab2-Task5-website.png">
-</p>
-<p>Task 6:
-For task 6 I had to commit all my files to my local repository; the way I did this was using git status to check what files were in my local folder, then using git add . to add all the files from the folder to the local repo and then using git commit to save all the files onto the local repository as well as leaving a comment about what had just been committed.
-<img src="Photos/Lab2-Task6-commit.png">
-</p>
-<p>Task 7:
-For this next task I had to push my committed files in my local repo to my repo on GitHub. To do this I used Git status to check if any files needed committing, I used the command git push and was then prompted to type the command git push --set-upstream origin main which pushed the files to my GitHub repo.
-<img src="Photos/Lab2-Task7-push.png">
-</p>
-<p>Task 8:
-   For the first set of changes I went into the source code and altered the text in the body <h1> from insert name here to my name.
-   For the second change to the website, I altered the colour of the page in the source code from white to blue. I did this by going to background colour in the style body and changing the colour using the dropdown.
 
-    <img src="Photos/Lab2-Task8-name-change.png">
-    <img src="Photos/Lab2-Task8(2)-colour-change.png">
-</p>
-<p>Task 9: 
-For this task I had to deploy the website onto GitHub; the way I did this is I went to my settings on GitHub to allow for deployments to be made. Then I directed the deployment to my main branch and saved the changes. When checking the deployment my website was there and this is important as this allows the website to be viewed in a browser instead of having to load it manually on my local machine.
-<img src="Photos/Lab2-Task9-github-pages-deployment.png">
-</p>
-<script src="script.js"></script>
-    </body>
+    <p>
+        <strong>Task 1:</strong><br>
+        To complete the first set of tasks I made a new local repository called ArchOSC assignment with the photos folder added into it. After that, I created a new document called lab 2 placeholder which was then saved into the local repository. Once the word doc was saved into the local repository, I took a screenshot of the repos contents which was then pasted into the Word doc.
+        <br>
+        <img src="Photos/Lab2-Task1-folder.png">
+    </p>
+
+    <p>
+        <strong>Task 2:</strong><br>
+        For the second task I had to initialise a new repo in the ArchOSC assignment folder. The way that I did this was by opening the command line inside the ArchOSC assignment folder. Then once I had the command line open in the correct folder, I had to type git init into the command line. This initialised an empty git repository in the folder.
+        <br>
+        <img src="Photos/Lab2-Task2-git-init.png">
+    </p>
+
+    <p>
+        <strong>Task 3:</strong><br>
+        For the 3rd task I had to produce a repo on GitHub that my local repo can link to. To produce this I went onto GitHub and selected the new repo button; this took me to an options screen. I made the repo private and included a README.md file as well as a Visual Studio .gitignore file. All I needed to do at this point was select myself as the repo owner and I had a new repo.
+        <br>
+        <img src="Photos/Lab2-Task3-github-repo.png">
+    </p>
+
+    <p>
+        <strong>Task 4:</strong><br>
+        For this task I had to link both my local and online repo together and then pull the contents from my repo on GitHub onto the local repo. The way I achieved this is by using the command git remote add origin and then pasted the link to my online repo into the command. By using this command, I told the local repo where it should be looking if it is pulling or pushing information and then to add the contents of my repo on GitHub to my local repo I used git pull origin main.
+        <br>
+        <img src="Photos/Lab2-Task4-git-pull.png">
+    </p>
+
+    <p>
+        <strong>Task 5:</strong><br>
+        The fifth task required me to produce a website and save it into my local repo. To start I opened a new text file in Visual Studio Code; once I made the text file, I copied the code I was provided into it. Once the code had been pasted into the file, I saved the file into my local repo and called it index.html.
+        <br>
+        <img src="Photos/Lab2-Task5-website.png">
+    </p>
+
+    <p>
+        <strong>Task 6:</strong><br>
+        For task 6 I had to commit all my files to my local repository; the way I did this was using git status to check what files were in my local folder, then using git add . to add all the files from the folder to the local repo and then using git commit to save all the files onto the local repository.
+        <br>
+        <img src="Photos/Lab2-Task6-commit.png">
+    </p>
+
+    <p>
+        <strong>Task 7:</strong><br>
+        For this next task I had to push my committed files in my local repo to my repo on GitHub. To do this I used Git status to check if any files needed committing, I used the command git push and was then prompted to type the command git push --set-upstream origin main.
+        <br>
+        <img src="Photos/Lab2-Task7-push.png">
+    </p>
+
+    <p>
+        <strong>Task 8:</strong><br>
+        For the first set of changes I went into the source code and altered the text in the body h1 from insert name here to my name. For the second change to the website, I altered the colour of the page in the source code from white to blue.
+        <br>
+        <img src="Photos/Lab2-Task8-name-change.png">
+        <img src="Photos/Lab2-Task8(2)-colour-change.png">
+    </p>
+
+    <p>
+        <strong>Task 9:</strong><br>
+        For this task I had to deploy the website onto GitHub by enabling GitHub Pages and directing the deployment to my main branch.
+        <br>
+        <img src="Photos/Lab2-Task9-github-pages-deployment.png">
+    </p>
+
+    <script src="script.js"></script>
+
+</body>
+
 </html>

@@ -1,30 +1,108 @@
-<!Doctype html>
-<html>
-    <head>
-        <title>My portfolio</title>
-        <link rel ="stylesheet" href = "style.css">
-    </head>
-    <body>
-    <div class="w3-container">
+<!DOCTYPE html>
+<html lang="en">
 
-<div class="w3-panel w3-padding-16 w3-orange">
-  <h4></h4>
-  <p></p>
-</div>
-<a href = "index.html"> Home</a>
-<h1>Lab 5 evidence</h1>
-<p> Task 1:
-The first task of the lab required me to clone my GitHub repository onto a virtual machine; to complete this task I had to log into the virtual machine, install Git on the virtual machine and then clone the repository contents onto the VM. The way that I cloned the contents of my repo was by using the developer command prompt on the VM; all I needed to do was initialise a repo on the VM and then clone the repo on GitHub into it using the link to the online repo to tell the VM what it is cloning from. 
-<img src="Photos/Lab5-Task1-vm-files.png"> 
-</p>
-<p>Task 2:
-Next, I was tasked with hosting my website from the virtual machine so that I could view it on my local machine. To do this I had to move to the wwwroot folder in my virtual machine's folder explorer and take the files for my website on the VM and paste them into the folder. After moving the website files into the IIS wwwroot folder, I entered the VM's IP address on my machine which allowed me to access the website on the virtual machine.
-<img src="Photos/Lab5-Task2-hosted-site.png"> 
-</p>
-<p>Task 3 + 4:
-Finally, the final 2 tasks required me to create a new VM, put my repos contents on the new VM and host my website on the second VM as well as on the first VM which involved repeating the same steps from task 1 and 2. Once I hosted the website on the second virtual machine I had to show that I had made a change to the website on my second VM. To do this I had to install VS code on the second VM, paste the code for my website into VS code and make some changes to the website. Once I changed the background colour of my website on the second VM, I saved the changes, hosted the website from the second VM and then took this screenshot to show both VMs hosting each website. By showing that each VM had a different website running on them, it shows that each VM could host a website independently from one another.
-<img src="Photos/Lab5-Task3-Task4-vm-comparison.png">
-</p>
-<script src="script.js"></script>
-    </body>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lab 6 Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #1077fd;
+            color: white;
+            text-align: center;
+        }
+
+        .topbar {
+            background-color: black;
+            padding: 15px;
+        }
+
+        a {
+            color: white;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-top: 20px;
+        }
+
+        p {
+            width: 80%;
+            margin: 20px auto;
+            line-height: 1.6;
+            font-size: 1.1rem;
+        }
+
+        img {
+            width: 80%;
+            margin-top: 15px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="topbar">
+        <a href="index.html">Home</a>
+    </div>
+
+    <h1>Lab 6 Evidence</h1>
+
+    <p>
+        <strong>Task 1:</strong><br>
+        Task 1 required me to check if VM1 and VM2 could communicate with each other; this required me to check the IP address on both VMs. Then I performed a ping and entered VM2’s IP address which then showed that both VMs could communicate with each other. By performing this I was able to see that both virtual machines were connected and would be able to share data with each other using their IP addresses.
+        <br>
+        <img src="Photos/Lab6-Task1-Ip-address-of-VM1.png">
+    </p>
+
+    <p>
+        <strong>Task 2:</strong><br>
+        Next, I had to do a Network Connection test as I needed to see if the IIS server was running on my VM2 properly. After completing the test, I was left with results showing the Remote Address, Remote Port, the Interface Alias and the Source Address. Overall, this provides evidence that the IIS server on VM2 can be reachable across a network and that port 80 was accepting incoming connections successfully.
+        <br>
+        <img src="Photos/Lab6-Task2-vm-communication.png">
+    </p>
+
+    <p>
+        <strong>Task 3:</strong><br>
+        Task 3 required me to perform the same checks for VM1 as I did for VM2 since there is a chance that VM1 cannot communicate with V2 whilst VM2 still can communicate. At first I had entered the command incorrectly which caused the red error message to appear but after retyping it the Test-NetConnection was successful which showed that both virtual machines could communicate with one another properly across the network; this is proven by the 3rd screenshot which states TcpTestSuceeded = True.
+        <br>
+        <img src="Photos/Lab6-Task3-vm1-vm2-communication.png">
+    </p>
+
+    <p>
+        <strong>Task 4:</strong><br>
+        After task 3, I had to deploy my website on one of my virtual machines and I did this using a runner. To use the runner, I went into my GitHub repo, navigated to the Actions tab and selected the runner. This provided me with a set of code to paste into my VM’s command prompt. Once the code had been pasted, I was left with a prompt telling me that my VM was connected to GitHub and that it is listening for Jobs. The benefit to having the runner is that it allowed GitHub Actions to deploy any changes that I made to the website automatically onto the virtual machine; this is a substantial time save as it stopped me from having to manually transfer the files over to the virtual machine myself any time a change was made.
+        <br>
+        <img src="Photos/Lab6-Task4-runner.png">
+    </p>
+
+    <p>
+        <strong>Task 5:</strong><br>
+        After connecting GitHub to my Virtual Machine, I had to create a new workflow on GitHub that would push my website onto the Virtual Machine. To ensure that I still had my files I cut the files in my wwwroot folder and placed it into a backup folder on my desktop. Then on GitHub, I created a new workflow with the YAML provided and committed the changes which pushed the website onto the VM. The reason I needed the YAML is because the workflow it provides tells GitHub Actions what it needs to do whenever a change is pushed to the repository. The workflow specifies the branch that needs to be monitored, which self-hosted runner should execute the job and the PowerShell commands that are needed to copy the website files into the wwwroot folder.
+        <br>
+        <img src="Photos/Lab6-Task5-yaml-workflow.png">
+    </p>
+
+    <p>
+        <strong>Updated website on Virtual Machine:</strong><br>
+        Finally, at the end of the lab, I made some updates to my website to show that the runner and GitHub Actions are working as intended. I added a navigation bar to my website as well as changed the colour of the text on the menu on the machine I was working on and once I made the change, I pushed the change to the GitHub repository. Once this change was pushed onto the GitHub repository, GitHub Actions transferred the change over to the virtual machine. This can be seen in the screenshot as the URL shows that the webpage is running from VM1.
+        <br>
+        <img src="Photos/Lab6-Task5-updated-site.png">
+    </p>
+
+    <script src="script.js"></script>
+
+</body>
+
 </html>

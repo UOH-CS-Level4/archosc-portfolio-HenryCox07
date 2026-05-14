@@ -13,47 +13,36 @@
 </div>
 <a href = "index.html"> Home</a>
 
-<h1> Lab 7 evidence </h1>
-<p> Task 1 (part 1):
-   The first task for lab 7 required me to produce a long scheduling algorithm in Visual Studio; to do this I had to create a Job class. In the class, I created parameters for ID (the person), arrivalTime, executionTime and priority. Once I had defined the job class, I produced a new list in my main function using the parameters in the Job class. All the jobs then get compared against each other by using their arrival time; the order of the jobs will be from the shortest to the highest arrival time. Finally, the jobs all have their priority checked against the minimum priority requirement of 5; if they do not pass the requirement they are excluded from the final list. 
-    <img src = "Photos/Lab7-Task1-part1-long-term-scheduling.png" >
+<h1> Lab 9 evidence </h1>
+<p> What is Banker's Algorithm:
+   In this lab I had to use Banker's algorithm to check if all the processes in the system I was provided could be safely executed with the resources that are available to it. The reason that we need to use Banker's algorithm is to prevent an operating system (OS) from reaching a deadlock. The Banker's algorithm stops this by checking if any resources given are to the OS leaves the system in a safe state; for a system to be in a safe state it must be able to eventually complete all tasks, not get stuck and properly release the resources it uses. The check is performed by checking how many resources are currently available, checking how many more resources each process needs to complete, simulates the processes being executed and then determines if there is a safe sequence for all the processes to finish. If it is successful, the request is allowed but if not the request to complete the processes is denied.
 </p>
-<p> Task 1 (part 2):
-    For part 2, I had to create another version of the scheduling program except this is the Short-Term Scheduling algorithm where the largest difference was that there was no priority check for any of the processes. The reason that the Short-Term Scheduling algorithm does not perform a priority check is because FCFS scheduling focuses on completing processes in the order they arrive rather than filtering them based on importance and because of this, the Long-Term Scheduling algorithm takes longer to perform the same function. However, a downside to short-term scheduling is that processes with long execution times can delay newer processes from completing quickly. Furthermore, the Gannt chart provided shows that each process is completed as it enters the system and one process will not complete before the previous process has completed due to the lack of priority checks; since every process must complete before the next one starts, the Gantt chart is easy to read and understand.
-    <img src = "Photos/Lab7-Task1-part2-1.png" >
-    <img src = "Photos/Lab7-Task1-part2-2.png">
-    <img src = "Photos/Lab7-Task1-part2-3.png">
-    <img src = "Photos/Lab7-Task1-part2-FCFS-gantt-chart.png">
+<p> What is deadlock:
+    A deadlock is an instance where one or more processes become permanently stuck causing all the other processes to stop completing as well leading to the system effectively freezing. This is bad for systems as it not only stops systems from working it also wastes resources.
+</p>
+<p> Task 1:
+    For task 1, the resources available to the system were R1 = 10, R2 = 5 and R3 = 7. Whilst checking if the processes could safely execute, the algorithm compared the allocation matrix (this shows the resources that are currently assigned to each process in the system) and the maximum demand matrix (which shows the maximum amount of resources each process may require to complete successfully) which were both identical. Banker's Algorithm compares these matrices to calculate the remaining resources needed by each process before execution can safely continue. Due to being identical, each process had a remaining need (how many more resources they need to complete a task) of 0; due to this all the processes already had the resources they needed to complete successfully. Evidence to support this is the sequence that the program generated as they were all able to finish in sequential order meaning they all had the resources needed for them to complete in the original order.
+    <img src = "Photos/Lab9-Task1-manuel-analysis.png" >
 </p>
 <p> Task 2:
-    The second task required me to produce a round robin scheduling algorithm to show the efficiency of processes in different time slices (these are defined chunks of processing time). To complete this program, I produced an overall Round Robin method that had the parameters (List<Process> processes, int timeQuantum) and the reason I did this is so that I would be able to run all the time slices in the program like so with
-RoundRobin(processes, 1);
-RoundRobin(processes, 3);
-RoundRobin(processes, 4);
-RoundRobin(processes, 6);
-By doing this, all the simulations get ran at once making it easy to spot the differences in efficiency in each time slice. Furthermore, I intentionally added the Gantt charts at the end of the code. The Gantt charts show the exact results of the simulations that ran. This is beneficial as the user can just look at the Gantt charts made within the code to have a clear visual representation of the data without having to make it themselves.
-After looking at the Gantt charts, it is made apparent that as the time quantum increases between the charts, the number of context switches (the number of times a task is paused and returned to later) decreases. However, the overall responsiveness of the CPU decreases leading to there being a higher chance that new processes take longer to complete if they are being added into the CPU whilst it is already performing processes.
- The way that you can tell that the context switches have decreased is that the number of times that a specific letter appears in the Gantt chart decreases as the time quantum increases. The cause of this is that (for time quantum 1) the CPU changes process every 1 unit of time. Due to this, some processes cannot be fully completed requiring them to be processed again. Compare this to time quantum 6 where a switch only happens if 6 units of time have passed, it is logical to assume that processes will be finished much quicker thanks to the CPU being able to dedicate more time to a process at once. This is backed up by process "G" that has an execution time of 6. Looking at Q1, process "G" appears 4 times but in time quantum 6 it only appears 1 time. This proves that a higher time quantum reduces context switching and, in turn, allows processes to run for longer before being interrupted. As such the benefit of a high time quantum is that there will be less wasted resources to complete the processes.
-
-
-    <img src = "Photos/Lab7-Task2-round-robin-1.png" >
-    <img src = "Photos/Lab7-Task2-round-robin-2.png" >
-    <img src = "Photos/Lab7-Task2-round-robin-3.png" >
-    <img src = "Photos/Lab7-Task2-round-robin-q1.png" >
-    <img src = "Photos/Lab7-Task2-round-robin-q3.png" >
-    <img src = "Photos/Lab7-Task2-round-robin-q4.png" >
-    <img src = "Photos/Lab7-Task2-round-robin-q6.png" >
+    For task 2, the algorithm was provided with more resources as R1 went up from 10 to 12 whilst R2 and R3 still kept their 5 and 7 resource values. Similarly to the first task, the algorithm compared the allocation demand matrix and the maximum demand matrix which are still identical. Due to this the processes in task 2 also have a remaining need of 0 and already have all the resources they need to all pass which can be seen with the safe sequence that the program outputs. All that happened was the system was provided more resources to complete the processes it was already completing. 
+    <img src = "Photos/Lab9-Task2-increasing-resources.png">
 </p>
 <p> Task 3:
-    For task 3 I had to add a priority system to the round robin scheduling algorithm, and this is because the algorithm previously treated all processes equally. Due to this the CPU would work on a process as it was given to it. However, the issue with this is that there could be some processes that need to be completed quicker than others. Using Round Robin 1 and 6 as examples, process "E" will be completed the quickest due to having a priority of 10 and a process "F" will be completed last due to it having priority 3. The way that I made this priority system was by creating a new priority variable to be used in the code, giving all the processes in the code a new priority, replacing the FIFO queue selection with a process to pick the process with the highest priority (.OrderByDescending(p => p.Priority) and then performs the FIFO check and finally producing a priority method to check the processes and the priority they have.
-    This logic is backed up by the Gantt charts as unlike the regular Round Robin (Q1), priority Round Robin (Q1) shows that process "E" gets repeated 2 times and then does not get repeated whereas regular Round Robin (Q1) must go through 4 other processes before it is able to reach process E again. Looking at process "E's" get priority, we can see that it has priority 10; this proves that the code is now completing processes based on the priority they have been given. 
-    <img src = "Photos/Lab7-Task3-priority-round-robin-code-1.png">
-    <img src = "Photos/Lab7-Task3-priority-round-robin-code-2.png">
-    <img src = "Photos/Lab7-Task3-priority-round-robin-code-3.png">
-    <img src = "Photos/Lab7-Task3-priority-round-robin-code-4.png">
-    <img src = "Photos/Lab7-Task3-priority-round-robin-code-processes.png">
-    <img src = "Photos/Lab7-Task3-priority-round-robin-q1.png">
-    <img src = "Photos/Lab7-Task3-priority-round-robin-q6.png">
+    This time, for task 3, the resource value R2 was increased from 5 to 7 whilst R1 and R3 stayed at 12 and 7 respectively. Just like the previous 2, the allocation demand matrix and maximum demand matrix are identical meaning that the remaining need is still 0. Due to this, all the processes are completed successfully in the same safe sequence as the last 2 tests. The outcome of the test is the same as test 2, all the processes are completed successfully but the system has more resources to work with. This is a benefit to the system as it reduces the chances that a process has to wait to be completed meaning that the processes will finish quicker making the system more efficient.
+    <img src = "Photos/Lab9-Task3-further-increasing-resources.png">
+</p>
+<p> Task 4:
+    For Task 4 I had to create a C# program to simulate a Banker's Algorithm that allowed the user to input the processes, the number or resource types, as well as the allocation and demand matrix; once the user has put the details into the system, arrays are created to store the information to be used later on. Then, the program calculates the need matrix by subtracting the allocation matrix from the maximum demand matrix. This allows the algorithm to determine how many more resources each process still requires before it can complete execution safely. The main section of the program performs the Banker’s Algorithm safety check using a while loop which checks each unfinished process and compares its remaining need with the currently available resources. If a process can safely execute, it is added to the safe sequence, marked as completed and its allocated resources are returned into the system. This continues until all processes complete successfully or no safe process can be found. When the program was tested using the values provided in the assignment, the algorithm generated the safe sequence:
+
+P1 -> P2 -> P3 -> P4 -> P5
+
+This confirmed that the system was in a safe state because every process was able to complete successfully without causing a deadlock.
+
+    <img src = "Photos/Lab9-Task 4-code-part1.png">
+    <img src = "Photos/Lab9-Task 4-code-part2.png">
+    <img src = "Photos/Lab9-Task 4-code-part3.png">
+    <img src = "Photos/Lab9-Task 4-code-part4.png">
 </p>
 <script src="script.js"></script>
     </body>
