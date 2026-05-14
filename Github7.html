@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lab 7 Portfolio</title>
+
     <link rel="stylesheet" href="style.css">
 
     <style>
@@ -21,13 +22,13 @@
             padding: 15px;
         }
 
-        a {
+        .topbar a {
             color: white;
             text-decoration: none;
-            font-size: 1.2rem;
+            font-size: 1rem;
         }
 
-        a:hover {
+        .topbar a:hover {
             text-decoration: underline;
         }
 
@@ -60,15 +61,17 @@
     <h1>Lab 7 Evidence</h1>
 
     <p>
-        <strong>Task 1 (part 1):</strong><br>
+        <strong>Task 1 (Part 1):</strong><br>
         The first task for lab 7 required me to produce a long scheduling algorithm in Visual Studio; to do this I had to create a Job class. In the class, I created parameters for ID (the person), arrivalTime, executionTime and priority. Once I had defined the job class, I produced a new list in my main function using the parameters in the Job class. All the jobs then get compared against each other by using their arrival time; the order of the jobs will be from the shortest to the highest arrival time. Finally, the jobs all have their priority checked against the minimum priority requirement of 5; if they do not pass the requirement they are excluded from the final list.
         <br>
         <img src="Photos/Lab7-Task1-part1-long-term-scheduling.png">
     </p>
 
     <p>
-        <strong>Task 1 (part 2):</strong><br>
-        For part 2, I had to create another version of the scheduling program except this is the Short-Term Scheduling algorithm where the largest difference was that there was no priority check for any of the processes. The reason that the Short-Term Scheduling algorithm does not perform a priority check is because FCFS scheduling focuses on completing processes in the order they arrive rather than filtering them based on importance and because of this, the Long-Term Scheduling algorithm takes longer to perform the same function. However, a downside to short-term scheduling is that processes with long execution times can delay newer processes from completing quickly. Furthermore, the Gantt chart provided shows that each process is completed as it enters the system and one process will not complete before the previous process has completed due to the lack of priority checks; since every process must complete before the next one starts, the Gantt chart is easy to read and understand.
+        <strong>Task 1 (Part 2):</strong><br>
+        For part 2, I had to create another version of the scheduling program except this is the Short-Term Scheduling algorithm where the largest difference was that there was no priority check for any of the processes. The reason that the Short-Term Scheduling algorithm does not perform a priority check is because FCFS scheduling focuses on completing processes in the order they arrive rather than filtering them based on importance and because of this, the Long-Term Scheduling algorithm takes longer to perform the same function. However, a downside to short-term scheduling is that processes with long execution times can delay newer processes from completing quickly.
+        <br><br>
+        Furthermore, the Gantt chart provided shows that each process is completed as it enters the system and one process will not complete before the previous process has completed due to the lack of priority checks; since every process must complete before the next one starts, the Gantt chart is easy to read and understand.
         <br>
         <img src="Photos/Lab7-Task1-part2-1.png">
         <img src="Photos/Lab7-Task1-part2-2.png">
@@ -78,18 +81,30 @@
 
     <p>
         <strong>Task 2:</strong><br>
-        The second task required me to produce a round robin scheduling algorithm to show the efficiency of processes in different time slices. These are defined chunks of processing time. To complete this program, I produced an overall Round Robin method that had the parameters (List&lt;Process&gt; processes, int timeQuantum). The reason I did this is so that I would be able to run all the time slices in the program.
+        The second task required me to produce a round robin scheduling algorithm to show the efficiency of processes in different time slices (these are defined chunks of processing time). To complete this program, I produced an overall Round Robin method that had the parameters (List&lt;Process&gt; processes, int timeQuantum) and the reason I did this is so that I would be able to run all the time slices in the program like so with:
         <br><br>
+
         RoundRobin(processes, 1);<br>
         RoundRobin(processes, 3);<br>
         RoundRobin(processes, 4);<br>
-        RoundRobin(processes, 6);<br><br>
-        By doing this, all the simulations are run at once making it easy to spot the differences in efficiency in each time slice. Furthermore, I intentionally added the Gantt charts at the end of the code. The Gantt charts show the exact results of the simulations that ran.
+        RoundRobin(processes, 6);
         <br><br>
+
+        By doing this, all the simulations get ran at once making it easy to spot the differences in efficiency in each time slice. Furthermore, I intentionally added the Gantt charts at the end of the code. The Gantt charts show the exact results of the simulations that ran. This is beneficial as the user can just look at the Gantt charts made within the code to have a clear visual representation of the data without having to make them manually.
+        <br><br>
+
         After looking at the Gantt charts, it is made apparent that as the time quantum increases between the charts, the number of context switches decreases. However, the overall responsiveness of the CPU decreases leading to there being a higher chance that new processes take longer to complete if they are being added into the CPU whilst it is already performing processes.
         <br><br>
-        The way that you can tell that the context switches have decreased is that the number of times that a specific letter appears in the Gantt chart decreases as the time quantum increases. The cause of this is that for time quantum 1, the CPU changes process every 1 unit of time. Due to this, some processes cannot be fully completed requiring them to be processed again. Compared to time quantum 6, where a switch only happens if 6 units of time have passed, processes are given more time to complete before being interrupted. This is backed up by process "G" that has an execution time of 6. Looking at Q1, process "G" appears 4 times but in time quantum 6 it only appears 1 time. This proves that a higher time quantum reduces context switching and allows processes to run for longer before being interrupted.
+
+        The way that you can tell that the context switches have decreased is that the number of times that a specific letter appears in the Gantt chart decreases as the time quantum increases. The cause of this is that for time quantum 1 the CPU changes process every 1 unit of time. Due to this, some processes cannot be fully completed requiring them to be processed again.
+        <br><br>
+
+        Compare this to time quantum 6 where a switch only happens if 6 units of time have passed. It is logical to assume that processes will be finished much quicker thanks to the CPU being able to dedicate more time to a process at once. This is backed up by process "G" that has an execution time of 6. Looking at Q1, process "G" appears 4 times but in time quantum 6 it only appears 1 time.
+        <br><br>
+
+        This proves that a higher time quantum reduces context switching and, in turn, allows processes to run for longer before being interrupted. As such, the benefit of a high time quantum is that there will be less wasted resources used to complete the processes.
         <br>
+
         <img src="Photos/Lab7-Task2-round-robin-1.png">
         <img src="Photos/Lab7-Task2-round-robin-2.png">
         <img src="Photos/Lab7-Task2-round-robin-3.png">
@@ -101,16 +116,31 @@
 
     <p>
         <strong>Task 3:</strong><br>
-        For task 3 I had to add a priority system to the round robin scheduling algorithm, and this is because the algorithm previously treated all processes equally. Due to this the CPU would work on a process as it was given to it. However, the issue with this is that there could be some processes that need to be completed quicker than others. Using Round Robin 1 and 6 as examples, process "E" will be completed the quickest due to having a priority of 10 and process "F" will be completed last due to it having priority 3.
+        For task 3 I had to add a priority system to the round robin scheduling algorithm, and this is because the algorithm previously treated all processes equally. Due to this the CPU would work on a process as it was given to it. However, the issue with this is that there could be some processes that need to be completed quicker than others.
         <br><br>
-        The way that I made this priority system was by creating a new priority variable to be used in the code, giving all the processes in the code a new priority, replacing the FIFO queue selection with a process to pick the process with the highest priority (.OrderByDescending(p =&gt; p.Priority)) and then performing the FIFO check.
+
+        Using Round Robin 1 and 6 as examples, process "E" will be completed the quickest due to having a priority of 10 and process "F" will be completed last due to it having priority 3.
         <br><br>
-        This logic is backed up by the Gantt charts as unlike the regular Round Robin Q1, Priority Round Robin Q1 shows that process "E" gets repeated 2 times and then does not get repeated whereas regular Round Robin Q1 must go through 4 other processes before it is able to reach process E again. Looking at process E's priority, we can see that it has priority 10; this proves that the code is now completing processes based on the priority they have been given.
+
+        The way that I made this priority system was by creating a new priority variable to be used in the code, giving all the processes in the code a new priority, replacing the FIFO queue selection with a process to pick the process with the highest priority using:
+        <br><br>
+
+        .OrderByDescending(p => p.Priority)
+        <br><br>
+
+        and then performing the FIFO check and finally producing a priority method to check the processes and the priority they have.
+        <br><br>
+
+        This logic is backed up by the Gantt charts as unlike the regular Round Robin (Q1), priority Round Robin (Q1) shows that process "E" gets repeated 2 times and then does not get repeated whereas regular Round Robin (Q1) must go through 4 other processes before it is able to reach process E again.
+        <br><br>
+
+        Looking at process "E's" priority, we can see that it has priority 10; this proves that the code is now completing processes based on the priority they have been given.
         <br>
+
         <img src="Photos/Lab7-Task3-priority-round-robin-code-1.png">
         <img src="Photos/Lab7-Task3-priority-round-robin-code-2.png">
         <img src="Photos/Lab7-Task3-priority-round-robin-code-3.png">
-        <img src="Photos/Lab7-Task3-priority-round-robin-processes.png">
+        <img src="Photos/Lab7-Task3-priority-round-robin-code-processes.png">
         <img src="Photos/Lab7-Task3-priority-round-robin-q1.png">
         <img src="Photos/Lab7-Task3-priority-round-robin-q6.png">
     </p>
@@ -119,4 +149,12 @@
 
 </body>
 
+</html>
+<p>
+    <strong>Reflection:</strong><br>
+    The work that I produced for Lab 7 taught me about CPU scheduling which involves the OS deciding what order the processes should be executed in, how the CPU allocates time to each process and how different scheduling methods affect the responsiveness, efficiency and fairness of an operating system. I learnt this by producing multiple scheduling programs including long term scheduling, short term scheduling and round robin scheduling. These scheduling processes were also tested with and without processes having a priority value. All the variations resulted in varied scheduling outputs showing how an operating system adapts to different scheduling inputs. Finally I made Gantt charts as a way to provide clear visual evidence of the results of each scheduling algorithm.
+    <br>
+</p>
+<script src="script.js"></script>
+    </body>
 </html>
